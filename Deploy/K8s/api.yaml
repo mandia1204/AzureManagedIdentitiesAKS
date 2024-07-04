@@ -16,6 +16,14 @@ spec:
         azure.workload.identity/use: "true"  # Required. Only pods with this label can use workload identity.
     spec:
       serviceAccountName: api-sa
+      volumes:
+      - name: persistent-storage
+        persistentVolumeClaim:
+          claimName: pvc-azurefile
       containers:
       - name: api
         image: mandiatestregistry2.azurecr.io/testapi:v10
+        volumeMounts:
+        - name: persistent-storage
+          mountPath: "/mnt/azurefile"
+          readOnly: false
