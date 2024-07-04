@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+        azure.workload.identity/use: "true"  # Required. Only pods with this label can use workload identity.
+    spec:
+      serviceAccountName: api-sa
+      containers:
+      - name: api
+        image: mandiatestregistry2.azurecr.io/testapi:v10

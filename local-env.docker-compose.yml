@@ -1,0 +1,9 @@
+services:
+  testapi:
+    container_name: testapi
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    command:  run

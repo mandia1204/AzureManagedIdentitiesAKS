@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    azure.workload.identity/client-id: "7f334dbe-f241-4a1b-a2af-1be292f7868a"
+  name: "api-sa"
+  namespace: "default"
